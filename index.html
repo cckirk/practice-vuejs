@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Practice Vue.js</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="index.js" defer></script>
-  </head>
-  <body>
-    <h1>Hello from HTML!</h1>
-    <div id="app">
-      {{ message }}
+<head>
+  <style>
+    .disabled {
+      color: LightGray;
+    }
+
+    .red {
+      background-color: red;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <title>Practice Vue.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <h1>Hello from HTML!</h1>
+  <div id="app">
+    <h3>{{ message }}</h3>
+    {{ name }}
+    <p>Name: <input type="text" v-model="name"></p>
+    <button v-on:click="changeMessage()">Click here for some exciting update</button>
+
+    <div>
+      <p v-if="showHiddenInfo">Here is a message! It is a secret message</p>
+      <button v-on:click="toggle">Toggle info</button>
+
     </div>
-    <div id="app-6">
-      <p>{{ message }}</p>
-      <input v-model="message">
+
+    <p v-bind:class="{disabled: greyOutInfo, red: true}">Here is some text for now</p>
+    <button v-on:click="greyOut">Grey out the text</button>  
+    
+    <hr>
+    <hr>
+    <hr>
+
+    <!-- {{ fruits }} -->
+    <!-- fruits.each do |fruit| -->
+    <div v-for="fruit in fruits">
+      {{ fruit }}
     </div>
-  </body>
+    <div>
+      
+    </div>
+    <hr>
+    <!-- {{ todos }} -->
+    <div v-for="todo in todos">
+      <h6>{{ todo.text }}</h6>
+      <p>;alsdfjo;aijsdfoiasdjfoi</p>
+      <!-- {{ todo["text"] }} -->
+    </div>
+  </div>
+</body>
 </html>
