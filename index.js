@@ -1,4 +1,5 @@
 /* global Vue */
+
 var app = new Vue({
   el: "#app",
   data: function () {
@@ -12,7 +13,8 @@ var app = new Vue({
         { text: 'Learn JavaScript' },
         { text: 'Learn Vue' },
         { text: 'Build something awesome' }
-      ]
+      ],
+      newFruit: ""
     };
   },
   methods: {
@@ -27,6 +29,31 @@ var app = new Vue({
     greyOut: function () {
       console.log('greying out text')
       this.greyOutInfo = !this.greyOutInfo;
+    },
+    addFruit: function () {
+      console.log("adding fruit...")
+      console.log(this.newFruit);
+      this.fruits.push(this.newFruit);
+      this.newFruit = "";
+    }
+  }
+});
+/* global Vue, axios */
+var app = new Vue({
+  el: "#app",
+  data: function () {
+    return {
+      message: "ajdls;kfjasd;lfkjadskl;j!",
+      todos: []
+    };
+  },
+  methods: {
+    loadTodos: function () {
+      console.log('i am loading todos...');
+      axios.get('https://jsonplaceholder.typicode.com/todos').then(response => {
+        console.log(response.data);
+        this.todos = response.data;
+      });
     }
   }
 });
